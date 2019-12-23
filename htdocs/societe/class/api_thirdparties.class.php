@@ -217,7 +217,7 @@ class Thirdparties extends DolibarrApi
 		if ($this->company->create(DolibarrApiAccess::$user) < 0)
 			throw new RestException(500, 'Error creating thirdparty', array_merge(array($this->company->error), $this->company->errors));
 
-		return $this->company->id;
+		return $this->_cleanObjectDatas($this->company);
 	}
 
 	/**
