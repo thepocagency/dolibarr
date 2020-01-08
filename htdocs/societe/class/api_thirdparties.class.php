@@ -201,7 +201,7 @@ class Thirdparties extends DolibarrApi
 	 * Create thirdparty object
 	 *
 	 * @param array $request_data   Request datas
-	 * @return int  ID of thirdparty
+	 * @return  array               Array of created thirdparty object
 	 */
     public function post($request_data = null)
 	{
@@ -217,7 +217,7 @@ class Thirdparties extends DolibarrApi
 		if ($this->company->create(DolibarrApiAccess::$user) < 0)
 			throw new RestException(500, 'Error creating thirdparty', array_merge(array($this->company->error), $this->company->errors));
 
-		return $this->_cleanObjectDatas($this->company);
+		return $this->get($this->company->id);
 	}
 
 	/**
